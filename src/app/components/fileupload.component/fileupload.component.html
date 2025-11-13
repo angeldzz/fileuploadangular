@@ -1,0 +1,19 @@
+<form (ngSubmit)="sendFileString64()" #form="ngForm" class="container mt-5" style="max-width: 600px;">
+    <div class="card shadow">
+        <div class="card-body p-4">
+            <div class="mb-3">
+                <label for="cajafilename" class="form-label fw-bold">
+                    Introduzca el archivo
+                </label>
+                <input type="file" 
+                       name="cajafilename" 
+                       #cajafilename 
+                       class="form-control">
+            </div>
+            
+            <button type="submit" class="btn btn-success w-100">
+                Enviar Formulario
+            </button>
+        </div>
+    </div>
+</form>
