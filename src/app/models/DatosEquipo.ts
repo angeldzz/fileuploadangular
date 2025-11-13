@@ -4,7 +4,7 @@ import { Jugador } from "./Jugador";
 export class DatosEquipo{
     constructor(
         public equipo: Equipo,
-        public Jugadores: Array<Jugador>,
+        public jugadores: Array<Jugador>,
     ) {
         
     }

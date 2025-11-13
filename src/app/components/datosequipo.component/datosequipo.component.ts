@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ServiceFutbol } from '../../services/ServiceFutbol';
-import { Equipo } from '../../models/Equipo';
-import { Jugador } from '../../models/Jugador';
+import { DatosEquipo } from '../../models/DatosEquipo';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -12,8 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './datosequipo.component.css',
 })
 export class DatosequipoComponent implements OnInit{
-  public equipo!: Equipo;
-  public jugadores!: Array<Jugador>
+  public datosEquipo!: DatosEquipo;
   constructor(
     private _Activatedrouter: ActivatedRoute,
     private _service: ServiceFutbol,
@@ -23,8 +21,7 @@ export class DatosequipoComponent implements OnInit{
     this._Activatedrouter.params.subscribe((params: Params) => {
       console.log(params["id"]);
       this._service.loadDatosEquipo(params["id"]).subscribe(response => {
-        this.equipo = response.equipo
-        this.jugadores = response.Jugadores
+        this.datosEquipo = response;
       })
     })
   }
