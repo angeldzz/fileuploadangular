@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "../../environments/environment.development";
-import { forkJoin, Observable, map } from "rxjs";
+import { forkJoin, Observable, map, delay } from "rxjs";
 import { Equipo } from "../models/Equipo";
 import { DatosEquipo } from "../models/DatosEquipo";
 import { Jugador } from "../models/Jugador";
@@ -20,7 +20,7 @@ export class ServiceFutbol{
         let urlequipo = environment.urlFutbol + "api/Equipos/" + id
         return forkJoin({
             equipo: this._http.get<Equipo>(urlequipo),
-            jugadores: this._http.get<Array<Jugador>>(urljugadores)
+            jugadores: this._http.get<Array<Jugador>>(urljugadores).pipe(delay(4000))
         }).pipe(
             map(response => new DatosEquipo(response.equipo, response.jugadores))
         )
