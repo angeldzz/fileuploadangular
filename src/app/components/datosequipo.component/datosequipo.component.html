@@ -1,0 +1,48 @@
+<div class="container mt-4">
+    <!-- Información del Equipo -->
+    <div class="card mb-4" *ngIf="equipo">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">{{ equipo.nombre }}</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <img [src]="equipo.imagen" [alt]="equipo.nombre" class="img-fluid rounded">
+                </div>
+                <div class="col-md-8">
+                    <p><strong>ID:</strong> {{ equipo.idEquipo }}</p>
+                    <p><strong>Champions:</strong> <span class="badge bg-success">{{ equipo.champions }}</span></p>
+                    <p><strong>Web:</strong> <a [href]="equipo.web" target="_blank">{{ equipo.web }}</a></p>
+                    <p><strong>Descripción:</strong> {{ equipo.descripcion }}</p>
+                    <p><strong>Finalista:</strong> 
+                        <span class="badge" [class.bg-warning]="equipo.finalista" [class.bg-secondary]="!equipo.finalista">
+                            {{ equipo.finalista ? 'Sí' : 'No' }}
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lista de Jugadores -->
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mb-3">Jugadores</h2>
+        </div>
+        @for(jugador of jugadores; track jugador.idJugador){
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <img [src]="jugador.imagen" [alt]="jugador.nombre" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{ jugador.nombre }}</h5>
+                    <p class="card-text">
+                        <strong>Posición:</strong> {{ jugador.posicion }}<br>
+                        <strong>País:</strong> {{ jugador.pais }}<br>
+                        <strong>Fecha Nacimiento:</strong> {{ jugador.fechaNacimiento }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>
